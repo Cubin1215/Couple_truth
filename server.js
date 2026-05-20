@@ -14,8 +14,8 @@ const rooms = {
         "users": [], 
         "turnIndex": 0,
         "assets": {
-            "left": "/images/Allison.jpg",
-            "right": "/images/Pranav_app.jpg"
+            "left": "/Images/Allison.jpg",
+            "right": "/Images/Pranav_app.jpg"
         }
     },
     "Right": { 
@@ -23,8 +23,8 @@ const rooms = {
         "users": [], 
         "turnIndex": 0,
         "assets": {
-            "left": "/images/sam.jpg",
-            "right": "/images/Breanna.jpg"
+            "left": "/Images/sam.jpg",
+            "right": "/Images/Breanna.jpg"
         }
     }
 };
