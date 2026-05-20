@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Couples Questionnaire</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #2d3436;
+        }
+
+        /* --- App Wrapper --- */
+        #app-wrapper {
+            width: 95%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* --- Login Screen --- */
+        #login-screen {
+            display: flex;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            background: white;
+        }
+
+        .room-door {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .door-left { background-color: #ff9a9e; }
+        .door-right { background-color: #ffeaa7; }
+
+        .room-door img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            background-color: white; 
+        }
+
+        input[type="password"], input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            background-color: #6c5ce7;
+            transition: background 0.3s;
+        }
+
+        button:hover { background-color: #5f27cd; }
+        .action-btn { background-color: #ff7675; }
+        .action-btn:hover { background-color: #d63031; }
+
+        .hidden { display: none !important; }
+
+        /* --- Main Game Layout --- */
+        #game-container {
+            display: flex;
+            width: 100%;
+            height: 85vh;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        #game-screen {
+            flex: 3;
+            display: flex;
+            padding: 20px;
+        }
+
+        .player-side {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .player-side img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid #dfe6e9;
+            object-fit: cover;
+        }
+
+        .center-stage {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 15px;
+            border-left: 2px dashed #b2bec3;
+            border-right: 2px dashed #b2bec3;
+        }
+
+        .category-btn {
+            background-color: #00b894;
+            margin: 5px;
+            width: 120px;
+        }
+
+        #stage-answer-box {
+            margin-top: 20px;
+            width: 100%;
+            min-height: 80px;
+            background: #f1f2f6;
+            padding: 15px;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        /* --- Side Chat Panel --- */
+        #side-chat-panel {
+            flex: 1;
+            background: #dfe6e9;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            border-left: 2px solid #b2bec3;
+        }
+
+        #chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 5px;
+        }
+        .chat-input-area input { margin: 0; width: 100%; }
+        .chat-input-area button { padding: 10px; }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 768px) {
+            #login-screen {
+                flex-direction: column;
+            }
+            #game-container {
+                flex-direction: column;
+                height: 95vh;
+                overflow-y: auto;
+            }
+            #game-screen {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .player-side {
+                flex-direction: row;
+                justify-content: space-around;
+                padding: 10px 0;
+            }
+            .player-side img {
+                width: 80px;
+                height: 80px;
+            }
+            .center-stage {
+                border-left: none;
+                border-right: none;
+                border-top: 2px dashed #b2bec3;
+                border-bottom: 2px dashed #b2bec3;
+                padding: 20px 0;
+                min-height: 300px;
+            }
+            #side-chat-panel {
+                border-left: none;
+                min-height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="app-wrapper">
+    <div id="login-screen">
+        <div class="room-door door-left">
+            <img src="/images/allicubin.jpg" alt="Alli & Cubin Placeholder">
+            <h2>Alli + Cubin</h2>
+            <input type="password" id="pass-left" placeholder="Password (Left1515)">
+            <button onclick="joinLeft()">Enter Room</button>
+        </div>
+
+        <div class="room-door door-right">
+            <img src="/images/breasam.jpg" alt="Right Room Placeholder">
+            <h2>Right Room</h2>
+            <input type="password" id="pass-right" placeholder="Password (Right2727)">
+            <button onclick="joinRight()">Enter Room</button>
+        </div>
+    </div>
+
+    <div id="game-container" class="hidden">
+        
+        <div id="game-screen">
+            <div class="player-side">
+                <h3 id="name-left">Player 1</h3>
+                <img id="avatar-left" src="" alt="Player 1">
+            </div>
+
+            <div class="center-stage">
+                <h2 id="room-status">Waiting for partner...</h2>
+                
+                <div id="category-selection" class="hidden">
+                    <h3>It is your turn!</h3>
+                    <button class="category-btn" onclick="selectCategory('Deep')">Deep</button>
+                    <button class="category-btn" onclick="selectCategory('Fun')">Fun</button>
+                    <button class="category-btn" onclick="selectCategory('Spicy')">Spicy</button>
+                    <button class="category-btn" onclick="selectCategory('Romantic')" style="background-color: #ff7675;">Romantic</button>
+                    <button class="category-btn" onclick="selectCategory('Mix')" style="background-color: #a29bfe;">Mix It Up</button>
+                </div>
+
+                <div id="waiting-message" class="hidden">
+                    <h3>Waiting for your partner to act...</h3>
+                </div>
+
+                <div id="question-area" class="hidden">
+                    <h3 id="current-question" style="color: #6c5ce7;"></h3>
+                    <input type="text" id="answer-input" placeholder="Type your answer...">
+                    <button onclick="submitAnswer()" id="submit-btn" class="action-btn">Send Answer</button>
+                </div>
+
+                <div id="stage-answer-box" class="hidden"></div>
+                
+                <button id="next-turn-btn" class="hidden action-btn" style="margin-top: 15px;" onclick="triggerNextTurn()">Next Question</button>
+            </div>
+
+            <div class="player-side">
+                <h3 id="name-right">Player 2</h3>
+                <img id="avatar-right" src="" alt="Player 2">
+            </div>
+        </div>
+
+        <div id="side-chat-panel">
+            <h3 style="margin-top: 0;">Couple Chat</h3>
+            <div id="chat-messages"></div>
+            <div class="chat-input-area">
+                <input type="text" id="side-chat-input" placeholder="Send a message...">
+                <button onclick="sendSideChat()">Send</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+    let currentRoom = "";
+    let myTurn = false;
+
+    function joinLeft() {
+        const pass = document.getElementById("pass-left").value;
+        socket.emit("join_room", { "roomName": "Left", "password": pass });
+    }
+
+    function joinRight() {
+        const pass = document.getElementById("pass-right").value;
+        socket.emit("join_room", { "roomName": "Right", "password": pass });
+    }
+
+    socket.on("room_joined", (data) => {
+        currentRoom = data.roomName;
+        
+        document.getElementById("login-screen").classList.add("hidden");
+        document.getElementById("game-container").classList.remove("hidden");
+        
+        document.getElementById("avatar-left").src = data.assets.left;
+        document.getElementById("avatar-right").src = data.assets.right;
+
+        if(data.position === "left") {
+            document.getElementById("avatar-left").style.borderColor = "#00b894";
+            document.getElementById("name-left").innerText = "You";
+            document.getElementById("name-right").innerText = "Partner";
+        } else {
+            document.getElementById("avatar-right").style.borderColor = "#00b894";
+            document.getElementById("name-right").innerText = "You";
+            document.getElementById("name-left").innerText = "Partner";
+        }
+    });
+
+    socket.on("room_error", (msg) => {
+        alert(msg);
+    });
+
+    socket.on("game_ready", (msg) => {
+        document.getElementById("room-status").innerText = msg;
+    });
+
+    socket.on("turn_update", (data) => {
+        document.getElementById("room-status").innerText = "Game in progress!";
+        document.getElementById("question-area").classList.add("hidden");
+        document.getElementById("stage-answer-box").classList.add("hidden");
+        document.getElementById("stage-answer-box").innerHTML = "";
+        document.getElementById("next-turn-btn").classList.add("hidden");
+
+        if (socket.id === data.activePlayer) {
+            myTurn = true;
+            document.getElementById("category-selection").classList.remove("hidden");
+            document.getElementById("waiting-message").classList.add("hidden");
+        } else {
+            myTurn = false;
+            document.getElementById("category-selection").classList.add("hidden");
+            document.getElementById("waiting-message").classList.remove("hidden");
+        }
+    });
+
+    function selectCategory(category) {
+        socket.emit("select_category", { "category": category, "roomName": currentRoom });
+    }
+
+    socket.on("new_question", (data) => {
+        document.getElementById("category-selection").classList.add("hidden");
+        document.getElementById("waiting-message").classList.add("hidden");
+        document.getElementById("question-area").classList.remove("hidden");
+        document.getElementById("current-question").innerText = data.question;
+
+        if (myTurn) {
+            document.getElementById("answer-input").classList.remove("hidden");
+            document.getElementById("submit-btn").classList.remove("hidden");
+        } else {
+            document.getElementById("answer-input").classList.add("hidden");
+            document.getElementById("submit-btn").classList.add("hidden");
+        }
+    });
+
+    function submitAnswer() {
+        const answer = document.getElementById("answer-input").value;
+        if (answer.trim() !== "") {
+            socket.emit("submit_answer", { "answer": answer, "roomName": currentRoom });
+            document.getElementById("answer-input").value = "";
+        }
+    }
+
+    socket.on("receive_answer", (data) => {
+        const answerBox = document.getElementById("stage-answer-box");
+        answerBox.classList.remove("hidden");
+        
+        const senderLabel = data.sender === socket.id ? "You" : "Partner";
+        answerBox.innerHTML = "<h3>" + senderLabel + " answered:</h3><p style='font-size: 18px;'>" + data.answer + "</p>";
+        
+        document.getElementById("answer-input").classList.add("hidden");
+        document.getElementById("submit-btn").classList.add("hidden");
+
+        // Only the person who received the answer (not their turn) can press Next
+        if (!myTurn) {
+            document.getElementById("next-turn-btn").classList.remove("hidden");
+        } else {
+            document.getElementById("waiting-message").innerText = "Waiting for partner to continue...";
+            document.getElementById("waiting-message").classList.remove("hidden");
+        }
+    });
+
+    function triggerNextTurn() {
+        socket.emit("next_turn", { "roomName": currentRoom });
+    }
+
+    // --- Side Chat Logic ---
+    function sendSideChat() {
+        const msgInput = document.getElementById("side-chat-input");
+        if (msgInput.value.trim() !== "") {
+            socket.emit("send_side_chat", { "roomName": currentRoom, "message": msgInput.value });
+            msgInput.value = "";
+        }
+    }
+
+    socket.on("receive_side_chat", (data) => {
+        const chatBox = document.getElementById("chat-messages");
+        const sender = data.sender === socket.id ? "You" : "Partner";
+        const color = data.sender === socket.id ? "#0984e3" : "#d63031";
+        
+        chatBox.innerHTML += "<p><strong style='color:" + color + "'>" + sender + ":</strong> " + data.message + "</p>";
+        chatBox.scrollTop = chatBox.scrollHeight;
+    });
+
+    // Send side chat on Enter key
+    document.getElementById("side-chat-input").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            sendSideChat();
+        }
+    });
+</script>
+</body>
+</html>
