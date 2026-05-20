@@ -10,7 +10,7 @@ app.use(express.static("public"));
 
 const rooms = {
     "Left": { 
-        "password": "Left1515", 
+        "password": "", 
         "users": [], 
         "turnIndex": 0,
         "assets": {
@@ -19,7 +19,7 @@ const rooms = {
         }
     },
     "Right": { 
-        "password": "Right2727", 
+        "password": "", 
         "users": [], 
         "turnIndex": 0,
         "assets": {
