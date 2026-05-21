@@ -523,8 +523,40 @@ io.on("connection", (socket) => {
         io.to(data.roomName).emit("receive_side_chat", { "message": data.message, "sender": socket.id });
     });
 
+    // Helper function to remove a user from the room data
+    function handleUserLeave(socketId) {
+        for (const roomName in rooms) {
+            const room = rooms[roomName];
+            const userIndex = room.users.indexOf(socketId);
+            
+            if (userIndex !== -1) {
+                // Remove the user from the array so the room isn't "full" anymore
+                room.users.splice(userIndex, 1);
+                console.log("Removed user from room: " + roomName);
+                
+                // Alert the remaining partner
+                io.to(roomName).emit("receive_side_chat", { 
+                    "message": "System: Partner has left the room or disconnected.", 
+                    "sender": "system" 
+                });
+            }
+        }
+    }
+
+    // New event: Listens for the manual "Leave Room" button click
+    socket.on("leave_room", () => {
+        handleUserLeave(socket.id);
+        
+        // Officially remove their connection from the specific Socket.IO room
+        for (const roomName in rooms) {
+            socket.leave(roomName);
+        }
+    });
+
+    // Updated event: Handles tab closures or lost connections
     socket.on("disconnect", () => {
         console.log("User disconnected: " + socket.id);
+        handleUserLeave(socket.id);
     });
 });
 
