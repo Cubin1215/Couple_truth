@@ -271,7 +271,10 @@
         </div>
 
         <div id="side-chat-panel">
-            <h3 style="margin-top: 0;">Couple Chat</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h3 style="margin-top: 0; margin-bottom: 0;">Couple Chat</h3>
+                <button onclick="leaveRoom()" style="background-color: #d63031; padding: 6px 12px; font-size: 13px;">Leave Room</button>
+            </div>
             <div id="chat-messages"></div>
             <div class="chat-input-area">
                 <input type="text" id="side-chat-input" placeholder="Send a message...">
@@ -376,12 +379,11 @@
         answerBox.classList.remove("hidden");
         
         const senderLabel = data.sender === socket.id ? "You" : "Partner";
-        answerBox.innerHTML = "<h3>" + senderLabel + " answered:</h3><p style='font-size: 18px;'>" + data.answer + "</p>";
+        answerBox.innerHTML = "<h3>" + senderLabel + " answered:</h3><p style=\"font-size: 18px;\">" + data.answer + "</p>";
         
         document.getElementById("answer-input").classList.add("hidden");
         document.getElementById("submit-btn").classList.add("hidden");
 
-        // Only the person who received the answer (not their turn) can press Next
         if (!myTurn) {
             document.getElementById("next-turn-btn").classList.remove("hidden");
         } else {
@@ -394,7 +396,6 @@
         socket.emit("next_turn", { "roomName": currentRoom });
     }
 
-    // --- Side Chat Logic ---
     function sendSideChat() {
         const msgInput = document.getElementById("side-chat-input");
         if (msgInput.value.trim() !== "") {
@@ -408,17 +409,21 @@
         const sender = data.sender === socket.id ? "You" : "Partner";
         const color = data.sender === socket.id ? "#0984e3" : "#d63031";
         
-        chatBox.innerHTML += "<p><strong style='color:" + color + "'>" + sender + ":</strong> " + data.message + "</p>";
+        chatBox.innerHTML += "<p><strong style=\"color:" + color + "\">" + sender + ":</strong> " + data.message + "</p>";
         chatBox.scrollTop = chatBox.scrollHeight;
     });
 
-    // Send side chat on Enter key
     document.getElementById("side-chat-input").addEventListener("keypress", function(event) {
         if (event.key === "Enter") {
             event.preventDefault();
             sendSideChat();
         }
     });
+
+    function leaveRoom() {
+        socket.emit("leave_room");
+        window.location.reload(); 
+    }
 </script>
 </body>
 </html>
