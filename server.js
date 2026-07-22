@@ -736,8 +736,114 @@ const questionBank = {
         "What is a specific text message I sent you in the past that completely shifted your mood from terrible to amazing?",
         "If you could guarantee that we keep one specific tradition or habit alive for the next twenty years, what would it be?",
         "What is the most beautiful unwritten, unspoken rule of our relationship that we both just automatically follow every day?"
+    ],
+    "Dares": [
+        "Send a voice note describing exactly what you'd do to your partner if they were in the room with you right now.",
+        "Send a spicy photo that shows off your favorite feature of yourself.",
+        "Turn on your camera and give your partner a slow, teasing look for 30 seconds without saying a single word.",
+        "Text your partner the dirtiest thought you've had about them today, in full detail.",
+        "Send a voice note whispering three things you want your partner to do to you tonight.",
+        "Take a mirror selfie in whatever you're wearing right now (or not wearing) and send it immediately.",
+        "Describe your partner's body to them out loud, starting with the part that turns you on the most.",
+        "Send a voice note reading one of your fantasies about the two of you out loud.",
+        "Bite your lip and send your partner a close-up photo of your face.",
+        "Video call your partner and slowly take off one item of clothing.",
+        "Text your partner, in vivid detail, the last dream or fantasy you had about them.",
+        "Send a photo of the outfit you'd most want your partner to peel off you.",
+        "Record a voice note moaning your partner's name once, just to tease them.",
+        "In a voice note, tell your partner the exact spot you wish they were kissing right now.",
+        "Send a teasing photo that shows just enough to leave your partner wanting more.",
+        "Describe, step by step, exactly how you'd undress your partner if they were there with you.",
+        "Send your partner a photo from the most seductive angle you can find.",
+        "Whisper into a voice note the naughtiest thing you've been wanting to try with your partner.",
+        "Turn on your camera, blow your partner a kiss, then show them exactly where you'd want to place it.",
+        "Text your partner what you're wearing right now and what you'd rather they peel you out of.",
+        "Send a voice note telling your partner what you're planning to wear to bed tonight.",
+        "Describe your favorite intimate memory with your partner in a voice note, in as much detail as you can.",
+        "Send a spicy photo with a caption telling your partner exactly what you want them to do about it.",
+        "On video, slowly trace a finger along your neck and collarbone while holding eye contact with your partner.",
+        "Send a voice note confessing the one thing you've been dying to do to your partner but haven't said out loud yet.",
+        "Set a timer and sext your partner nonstop for three minutes — no pausing.",
+        "Text your partner a play-by-play of what would happen if you shared a hotel room tonight.",
+        "Text three words for what you want tonight, then make your partner beg for the details.",
+        "Text the most scandalous thought you've had about your partner in a public place.",
+        "Text an \"if you were here right now...\" message and don't hold anything back.",
+        "Text your partner a filthy dare of their own to carry out later tonight.",
+        "Text three emojis for what you want to do to your partner, then explain each one.",
+        "Text a rating out of ten for how badly you want them tonight, and justify every point.",
+        "Text your partner the one thing you can't stop picturing about them today.",
+        "Text the fantasy you're too shy to say out loud — type all of it.",
+        "Send a voice note rating your partner's sexiest features from head to toe.",
+        "Send a voice note saying your partner's name the way you would in bed.",
+        "Whisper a countdown from five into a voice note, then say what happens at zero.",
+        "Send a voice note narrating what you'd do to your partner in the shower.",
+        "Whisper the naughtiest nickname you have for your partner into a voice note.",
+        "Send a voice note as if you're murmuring right behind their ear.",
+        "Send a voice note listing everything you'd do with one uninterrupted hour together.",
+        "Send a voice note describing your partner's touch and how much you ache for it.",
+        "Read your partner the dirtiest text you've ever wanted to send but never did — out loud.",
+        "Send a voice note whispering exactly where you want to be touched right now.",
+        "Send a voice note of one slow sigh, then finish the thought out loud.",
+        "Whisper \"I've been thinking about you all day\" into a voice note and end it dirty.",
+        "Send a \"wish you were here\" photo from your bed.",
+        "Send a photo of you wrapped in nothing but a bedsheet.",
+        "Send a photo hinting at what's underneath without actually showing it.",
+        "Send a photo of your reflection in a steamy mirror.",
+        "Send a photo looking back over your shoulder at the camera.",
+        "Send a photo of your hand resting exactly where you'd want theirs.",
+        "Send a photo teasing your waist or the curve of your hip.",
+        "Send a photo of just your eyes giving your most wanting look.",
+        "Send a photo of your silhouette in low light.",
+        "Send a photo taken from above while you're lying back.",
+        "Send a photo in your partner's favorite color, styled to tempt them.",
+        "Send a photo daring to show a little more skin than usual.",
+        "Send a photo from the lowest, most flattering angle you can find.",
+        "Turn on your camera and give a full slow striptease to a song of their choice.",
+        "On camera, run your hands slowly down your own sides while holding their gaze.",
+        "On camera, mouth \"come here,\" then bite your lip.",
+        "On camera, mouth your partner's name slowly and make them read your lips.",
+        "On camera, drag your fingertips across your lips without looking away.",
+        "On camera, blow a slow kiss and press it against your own skin.",
+        "On camera, lower a strap or collar with a slow over-the-shoulder glance.",
+        "On camera, give a slow hair flip and a look that says everything.",
+        "Describe your ideal reunion — the first ten minutes together — and leave nothing out.",
+        "Describe the very first thing you'd tear off them the moment the door closes.",
+        "Describe out loud what you're picturing doing to your partner right now, in present tense.",
+        "Describe the sexiest thing your partner has ever worn — or worn nothing of.",
+        "Describe a roleplay you'd want to act out together over video tonight.",
+        "Describe the wildest place you'd want to have your partner, and exactly how it plays out.",
+        "Describe your favorite thing your partner does with their mouth.",
+        "Describe the dirtiest dream you've had about your partner, scene by scene.",
+        "Describe how you'd slowly strip out of what you're wearing if they were watching.",
+        "Describe exactly how you want your partner to pull you in and hold you down.",
+        "Describe how you'd tease your partner all day before finally letting them have you.",
+        "Describe the first place you'd kiss your partner, and how agonizingly slowly.",
+        "Plan out loud the filthiest twenty-four hours for the next time you're together.",
+        "Tell your partner exactly how you want to be woken up when you're finally sharing a bed.",
+        "Pick one part of your partner's body and describe everything you'd do to it.",
+        "Name three places on your own body where you want your partner's attention first.",
+        "Tell your partner the one word you want to hear them say right now.",
+        "Say the filthiest thing you'd want whispered back into your ear.",
+        "Retell the last time things got heated between you two, like a bedtime story.",
+        "Confess the naughtiest thought you had about your partner during a boring moment today.",
+        "Tell your partner which of their features you'd get lost in first, and for how long.",
+        "Whisper the outfit you'd wear on a video date just to drive them out of their mind.",
+        "Tell your partner the exact fantasy you replay when you miss them the most.",
+        "Dare your partner to match the next spicy photo you send with one of their own.",
+        "Give your partner one command for tonight and make them promise to obey it.",
+        "Tell your partner the first place you'd drag them the second they land.",
+        "Count out loud the ways you'd tease your partner if they were lying right next to you.",
+        "Tell your partner the one thing you want them to do the second your next call connects.",
+        "Whisper the last thing you'd want to hear before falling asleep tangled together.",
+        "Tell your partner what you're wearing right now and dare them to guess what's underneath.",
+        "Describe the sound you'd make if your partner did their signature move right now.",
+        "Promise your partner one specific, filthy thing you'll do the next time you're alone."
     ]
 };
+
+// Admin password for the hidden "reset all rooms" control. Kept server-side
+// only so it never appears in the client HTML/JS (safe from browser inspect).
+const ADMIN_PASSWORD = "15271527";
 
 io.on("connection", (socket) => {
     console.log("A user connected: " + socket.id);
@@ -777,6 +883,13 @@ io.on("connection", (socket) => {
 
     function startTurn(roomName) {
         const targetRoom = rooms[roomName];
+        // Guard: only run a turn when both partners are present, and keep
+        // turnIndex within bounds so a leftover index never points at an
+        // undefined user (which would freeze the game and require a restart).
+        if (!targetRoom || targetRoom.users.length < 2) return;
+        if (targetRoom.turnIndex > targetRoom.users.length - 1) {
+            targetRoom.turnIndex = 0;
+        }
         const activePlayerId = targetRoom.users[targetRoom.turnIndex];
         io.to(roomName).emit("turn_update", { "activePlayer": activePlayerId });
     }
@@ -786,9 +899,10 @@ io.on("connection", (socket) => {
         const roomName = data.roomName;
         let categoryQuestions = [];
     
-        // Logic for the Mix category
+        // Logic for the Mix category (truth questions only — excludes Dares)
         if (category === "Mix") {
             for (let key in questionBank) {
+                if (key === "Dares") continue;
                 categoryQuestions = categoryQuestions.concat(questionBank[key]);
             }
         } else {
@@ -813,7 +927,8 @@ io.on("connection", (socket) => {
     socket.on("next_turn", (data) => {
         const roomName = data.roomName;
         const targetRoom = rooms[roomName];
-        
+        if (!targetRoom || targetRoom.users.length < 2) return;
+
         targetRoom.turnIndex = targetRoom.turnIndex === 0 ? 1 : 0;
         startTurn(roomName);
     });
@@ -832,13 +947,19 @@ io.on("connection", (socket) => {
             if (userIndex !== -1) {
                 // Remove the user from the array so the room isn't "full" anymore
                 room.users.splice(userIndex, 1);
+                // Reset the turn pointer so it always references a valid remaining
+                // user (prevents the "game frozen / needs restart" bug on leave).
+                room.turnIndex = 0;
                 console.log("Removed user from room: " + roomName);
-                
+
                 // Alert the remaining partner
-                io.to(roomName).emit("receive_side_chat", { 
-                    "message": "System: Partner has left the room or disconnected.", 
-                    "sender": "system" 
+                io.to(roomName).emit("receive_side_chat", {
+                    "message": "System: Partner has left the room or disconnected.",
+                    "sender": "system"
                 });
+                // Reset the remaining player's game view to a waiting state so
+                // they aren't stuck on a dead question with no way to continue.
+                io.to(roomName).emit("partner_left");
             }
         }
     }
@@ -850,6 +971,25 @@ io.on("connection", (socket) => {
         // Officially remove their connection from the specific Socket.IO room
         for (const roomName in rooms) {
             socket.leave(roomName);
+        }
+    });
+
+    // Hidden admin control: clears every user from every room so nobody stays
+    // "stuck" holding a slot after leaving a tab open somewhere. The password is
+    // validated here on the server; the client only ever sends the typed guess,
+    // so the real password never appears in the page source.
+    socket.on("admin_reset", (data) => {
+        if (data && data.password === ADMIN_PASSWORD) {
+            for (const roomName in rooms) {
+                io.to(roomName).emit("force_kicked");
+                io.socketsLeave(roomName);
+                rooms[roomName].users = [];
+                rooms[roomName].turnIndex = 0;
+            }
+            socket.emit("admin_reset_result", { "success": true });
+            console.log("Admin reset: all rooms cleared by " + socket.id);
+        } else {
+            socket.emit("admin_reset_result", { "success": false });
         }
     });
 

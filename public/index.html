@@ -84,6 +84,45 @@
 
         .hidden { display: none !important; }
 
+        /* --- Discreet admin reset control (home screen, top-right) --- */
+        #admin-reset-btn {
+            position: fixed;
+            top: 12px;
+            right: 12px;
+            width: 34px;
+            height: 34px;
+            padding: 0;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.25);
+            color: rgba(45, 52, 54, 0.55);
+            font-size: 16px;
+            line-height: 34px;
+            box-shadow: none;
+            z-index: 50;
+        }
+        #admin-reset-btn:hover { background-color: rgba(255, 255, 255, 0.6); }
+
+        /* --- Admin reset modal --- */
+        #admin-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+        .admin-modal-box {
+            background: #fff;
+            border-radius: 14px;
+            padding: 24px;
+            width: 90%;
+            max-width: 320px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        .admin-modal-box input { width: 90%; }
+
         /* --- Main Game Layout --- */
         #game-container {
             display: flex;
@@ -213,6 +252,22 @@
 <body>
 
 <div id="app-wrapper">
+    <button id="admin-reset-btn" onclick="adminReset()" title="Reset rooms">&#9881;</button>
+
+    <div id="admin-modal" class="hidden">
+        <div class="admin-modal-box">
+            <h3 style="margin-top: 0;">Reset All Rooms</h3>
+            <p style="font-size: 13px; color: #636e72; margin: 6px 0 14px;">This kicks everyone out of every room.</p>
+            <input type="password" id="admin-pass-input" placeholder="Admin password"
+                   onkeydown="if(event.key==='Enter'){event.preventDefault();submitAdminReset();}">
+            <div id="admin-modal-status" style="min-height: 18px; font-size: 13px; margin: 6px 0;"></div>
+            <div style="display: flex; gap: 8px; justify-content: center;">
+                <button onclick="submitAdminReset()" class="action-btn">Reset</button>
+                <button onclick="closeAdminModal()" style="background-color: #b2bec3;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
     <div id="login-screen">
         <div class="room-door door-left">
             <img src="/Images/allicubin.jpg" alt="Alli & Cubin Placeholder">
@@ -246,6 +301,7 @@
                     <button class="category-btn" onclick="selectCategory('Fun')">Fun</button>
                     <button class="category-btn" onclick="selectCategory('Spicy')">Spicy</button>
                     <button class="category-btn" onclick="selectCategory('Romantic')" style="background-color: #ff7675;">Romantic</button>
+                    <button class="category-btn" onclick="selectCategory('Dares')" style="background-color: #0652DD;">Dares</button>
                     <button class="category-btn" onclick="selectCategory('Mix')" style="background-color: #a29bfe;">Mix It Up</button>
                 </div>
 
@@ -290,23 +346,77 @@
     const socket = io();
     let currentRoom = "";
     let myTurn = false;
+    // Remember the room password so we can silently rejoin if the connection
+    // drops (e.g. a phone backgrounding the tab) instead of "leaving".
+    let pendingPassword = "";
 
     function joinLeft() {
         const pass = document.getElementById("pass-left").value;
+        pendingPassword = pass;
         socket.emit("join_room", { "roomName": "Left", "password": pass });
     }
 
     function joinRight() {
         const pass = document.getElementById("pass-right").value;
+        pendingPassword = pass;
         socket.emit("join_room", { "roomName": "Right", "password": pass });
     }
 
+    // Hidden admin control. Uses an in-page modal (not native prompt/alert,
+    // which mobile browsers often suppress). Only the typed guess is sent to
+    // the server, which holds the real password — so it never appears here.
+    function adminReset() {
+        document.getElementById("admin-pass-input").value = "";
+        const status = document.getElementById("admin-modal-status");
+        status.innerText = "";
+        document.getElementById("admin-modal").classList.remove("hidden");
+        document.getElementById("admin-pass-input").focus();
+    }
+
+    function closeAdminModal() {
+        document.getElementById("admin-modal").classList.add("hidden");
+    }
+
+    function submitAdminReset() {
+        const pw = document.getElementById("admin-pass-input").value;
+        if (!pw) return;
+        const status = document.getElementById("admin-modal-status");
+        status.style.color = "#636e72";
+        status.innerText = "Resetting...";
+        socket.emit("admin_reset", { "password": pw });
+    }
+
+    socket.on("admin_reset_result", (data) => {
+        const status = document.getElementById("admin-modal-status");
+        if (data.success) {
+            status.style.color = "#00b894";
+            status.innerText = "All rooms reset. Everyone kicked out.";
+            setTimeout(closeAdminModal, 1200);
+        } else {
+            status.style.color = "#d63031";
+            status.innerText = "Incorrect password.";
+        }
+    });
+
+    socket.on("force_kicked", () => {
+        window.location.reload();
+    });
+
+    // Auto-rejoin after a dropped connection so brief mobile disconnects don't
+    // boot a player out of the game.
+    socket.on("connect", () => {
+        if (currentRoom && pendingPassword) {
+            socket.emit("join_room", { "roomName": currentRoom, "password": pendingPassword });
+        }
+    });
+
     socket.on("room_joined", (data) => {
         currentRoom = data.roomName;
-        
+
         document.getElementById("login-screen").classList.add("hidden");
         document.getElementById("game-container").classList.remove("hidden");
-        
+        document.getElementById("admin-reset-btn").classList.add("hidden");
+
         document.getElementById("avatar-left").src = data.assets.left;
         document.getElementById("avatar-right").src = data.assets.right;
 
@@ -343,8 +453,24 @@
         } else {
             myTurn = false;
             document.getElementById("category-selection").classList.add("hidden");
+            document.getElementById("waiting-message").innerHTML = "<h3>Waiting for your partner to act...</h3>";
             document.getElementById("waiting-message").classList.remove("hidden");
         }
+    });
+
+    // Partner dropped/left: clear the stuck question view and show a waiting
+    // state so the remaining player isn't frozen and can continue when the
+    // partner reconnects.
+    socket.on("partner_left", () => {
+        myTurn = false;
+        document.getElementById("category-selection").classList.add("hidden");
+        document.getElementById("question-area").classList.add("hidden");
+        document.getElementById("stage-answer-box").classList.add("hidden");
+        document.getElementById("stage-answer-box").innerHTML = "";
+        document.getElementById("next-turn-btn").classList.add("hidden");
+        document.getElementById("waiting-message").innerHTML = "<h3>Waiting for your partner to reconnect...</h3>";
+        document.getElementById("waiting-message").classList.remove("hidden");
+        document.getElementById("room-status").innerText = "Your partner disconnected.";
     });
 
     function selectCategory(category) {
