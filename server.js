@@ -787,7 +787,7 @@ const questionBank = {
         "Trace every scar, freckle, or mark on your partner's torso with slow kisses, naming what you love about each spot.",
         "Put on an erotic playlist and synchronize your movements to the rhythm of the slowest track.",
         "Tell your partner exactly how you want them to touch themselves while you watch from a few feet away.",
-        "Set a timer for five minutes: complete physical contact, heavy breathing, and full-body exploration, but zero direct genital contact until the alarm sounds."
+        "Set a timer for five minutes: complete physical contact, heavy breathing, and full-body exploration, but zero direct genital contact until the alarm sounds.",
         "Lie on your back while your partner straddles your chest and leans down to deliver deep, unhurried kisses.",
         "Trace a line of saliva from their throat all the way down to their waistband, blowing cool air over it immediately after.",
         "Sit face-to-face in each other's laps, rocking gently together without breaking eye contact for two full minutes.",
@@ -837,7 +837,7 @@ const questionBank = {
         "Gently bite their lower lip, holding it between your teeth for a few lingering seconds before releasing it into a kiss.",
         "Run your thumbs slowly across their cheekbones and lips, taking time to study every detail of their expression before undressing them.",
         "Position yourself over your partner, supporting your weight on your forearms, and let your body lightly graze theirs with every breath.",
-        "Set a timer for three minutes to practice total sensory focus: touch, taste, and breathe in your partner with eyes closed, exploring only what you can feel."
+        "Set a timer for three minutes to practice total sensory focus: touch, taste, and breathe in your partner with eyes closed, exploring only what you can feel.",
         "Lie face-to-face on your sides, hook one leg over your partner's hip, and kiss uninterrupted for three minutes.",
         "Run your fingers slowly through their hair from the roots, lightly tugging while keeping your lips hovering just millimeters from theirs.",
         "Trace a circle around each of their nipples with the tip of your tongue, deliberately avoiding touching the center.",
@@ -937,7 +937,7 @@ const questionBank = {
         "Bite their shoulder gently through their shirt, applying enough grip to make them gasp, then immediately soothe it with your tongue.",
         "Wrap your legs around their waist while they stand, holding onto their shoulders as they carry you over to the bed.",
         "Press them onto their back, trap their legs with yours, and kiss them all over their face, throat, and chest without pausing.",
-        "Set a timer for sixty seconds: engage in the most urgent, breathless, full-body kiss you can manage before breaking away completely."
+        "Set a timer for sixty seconds: engage in the most urgent, breathless, full-body kiss you can manage before breaking away completely.",
         "Press your partner back against the mattress and spend two full minutes kissing down their abdomen, stopping right at the edge of their underwear line.",
         "Straddle your partner's thighs while wearing only underwear and rock slowly against their lap without letting your hands touch their body.",
         "Run an ice cube slowly from the hollow of their throat all the way down to their hip bones, using your mouth to follow the melted trail immediately.",
@@ -987,7 +987,7 @@ const questionBank = {
         "Place your partner flat on their back, straddle their chest facing down at them, and slowly trace your lips across their eyelids and forehead.",
         "Slide your bare foot slowly up the inside of their calf and inner thigh while sitting across from them, maintaining a teasing smile.",
         "Set a three-minute timer: explore every inch of each other’s face, neck, and shoulders using only lips and breath—no hands allowed.",
-        "Stand chest-to-chest in the center of the room, wrap your arms around each other tightly, and hold that total physical connection in silence for sixty seconds."
+        "Stand chest-to-chest in the center of the room, wrap your arms around each other tightly, and hold that total physical connection in silence for sixty seconds.",
         "Give your partner a hickey.",
         "Teach everyone your kinkiest sex technique.",
         "Recreate the sounds you make during sex.",
